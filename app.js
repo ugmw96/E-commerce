@@ -1,5 +1,6 @@
 const express = require('express');
 const insertItem = require('./routes/item');
+const userRoutes = require('./routes/user')
 const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 //Router middleware
 app.use('/api/item', insertItem);
+app.use('/api/user', userRoutes);
 
 //Run Server
 app.listen(process.env.PORT, () => console.log(`Port ${process.env.PORT}!`))
