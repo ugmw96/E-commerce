@@ -52,5 +52,18 @@ exports.deleteItem = async(req,res) => {
 
 //update a item
 exports.updateItem = async(req,res) => {
+  const newItem = new Item({
+    name: req.body.title,
+    description: req.body.description,
+    price: req.body.price,
+    imageURL: req.body.imageURL,
+  });
 
+  try {
+    await Item.findById(req.body.id);
+    await newItem.save();
+    
+  } catch (error) {
+    console.log(error);
+  }
 }
