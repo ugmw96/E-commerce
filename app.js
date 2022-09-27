@@ -12,8 +12,7 @@ require('dotenv').config();
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URL,
   collection: 'sessions',
-})
-console.log(store);
+});
 
 //Mongo database configuration
 mongoose.connect(process.env.MONGODB_URL, () => {

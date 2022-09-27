@@ -21,3 +21,11 @@ exports.userLogin = async(req,res) => {
             res.send(req.session)
         }
 }
+
+//logout controller
+exports.userLogout = async (req,res) => {
+    await req.session.destroy((err) => {
+        console.log(err);
+        res.send('logout')
+    })
+}
