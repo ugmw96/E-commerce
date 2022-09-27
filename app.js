@@ -13,6 +13,7 @@ const store = new MongoDBStore({
   uri: process.env.MONGODB_URL,
   collection: 'sessions',
 })
+console.log(store);
 
 //Mongo database configuration
 mongoose.connect(process.env.MONGODB_URL, () => {
@@ -26,8 +27,11 @@ app.use(express.json());
 app.use(
   session({
     secret: 'gayan',
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 10
+    },
     store: store,
   })
 )

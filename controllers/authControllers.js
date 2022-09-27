@@ -17,7 +17,7 @@ exports.userLogin = async(req,res) => {
         }
 
         if (password && checkEmail) {
-            res.setHeader('Set-Cookie', 'login=true; Max-Age=10; Secure=true')
-            res.send('login success')
+            res.setHeader('Set-Cookie', 'login=true; MaxAge=10; Secure = true')
+            res.send(req.session)
         }
 }
