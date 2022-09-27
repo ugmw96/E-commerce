@@ -16,5 +16,8 @@ exports.userLogin = async(req,res) => {
             res.send('Invalid Password');
         }
 
-        res.send('login success')
+        if (password && checkEmail) {
+            res.setHeader('Set-Cookie', 'login=true; Max-Age=10; Secure=true')
+            res.send('login success')
+        }
 }
