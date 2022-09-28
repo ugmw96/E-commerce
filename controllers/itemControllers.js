@@ -2,6 +2,7 @@ const Item = require('../models/Item')
 
 //add item
 exports.addItem = async(req,res) => {
+  
   const newItem = new Item({
     name: req.body.title,
     description: req.body.description,
@@ -17,7 +18,7 @@ exports.addItem = async(req,res) => {
   }
 }
 
-//get a item
+//get a item *****
 exports.getItem = async(req,res) => {
   try {
     const i = await Item.findById(req.body.id).exec();
@@ -50,7 +51,7 @@ exports.deleteItem = async(req,res) => {
   }
 }
 
-//update a item
+//update a item *****
 exports.updateItem = async(req,res) => {
   const newItem = new Item({
     name: req.body.title,

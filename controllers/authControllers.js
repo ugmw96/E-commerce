@@ -27,8 +27,7 @@ exports.userLogin = async(req,res) => {
 
 //logout controller
 exports.userLogout = async (req,res) => {
-    await req.session.destroy((err) => {
-        console.log(err);
+    await req.session.destroy(() => {
         res.send('logout')
     })
 }

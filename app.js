@@ -28,6 +28,7 @@ app.use(
     secret: 'gayan',
     resave: true,
     saveUninitialized: true,
+    isLoggedIn: false,
     cookie: {
       maxAge: 1000
     },

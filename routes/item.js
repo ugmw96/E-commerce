@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const item = require('../controllers/itemControllers');
+const isAuth = require('../middleware/is-auth');
 
 //add a item
-router.post('/addItem',item.addItem);
+router.post('/addItem',isAuth,item.addItem);
 
 //get all items
 router.get('/getItems',item.getAllItem)

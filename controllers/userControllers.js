@@ -16,13 +16,13 @@ exports.signupUser = async (req,res) => {
   const newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    password: hashedPassword ,
+    password: hashedPassword,
   });
 
   try {
     await newUser.save();
     res.send({id: newUser._id});
-    
+
   } catch (error) {
     console.log(error);
   }
