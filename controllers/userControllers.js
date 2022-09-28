@@ -1,8 +1,20 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const sgMail = require('@sendgrid/mail');
 
 //sing up user=>
 exports.signupUser = async (req,res) => {
+
+  // // mailing servise configuration
+  // sgMail.setApiKey(process.env.NODEMAILER_API);
+  // const message = {
+  //   to: 'ugmw95@gmail.com',
+  //   from: 'node-app@gmail.com',
+  //   subject: 'Signup successfully',
+  //   html: '<h2>Signup successfully</h2>',
+  // }
+  // await sgMail.send(message);
+
   //checking existing emails
   const existingEmail = await User.findOne({email: req.body.email});
   if (existingEmail) {
@@ -18,7 +30,7 @@ exports.signupUser = async (req,res) => {
     email: req.body.email,
     password: hashedPassword,
   });
-
+ 
   try {
     await newUser.save();
     res.send({id: newUser._id});

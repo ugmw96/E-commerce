@@ -21,7 +21,7 @@ exports.userLogin = async(req,res) => {
             req.session.isLoggedIn = true;
             req.session.timeNow = Date.now();
             req.session.user = user;
-            res.send(req.session)
+            res.send(req.session);
         }
 }
 
