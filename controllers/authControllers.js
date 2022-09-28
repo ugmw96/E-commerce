@@ -7,17 +7,20 @@ exports.userLogin = async(req,res) => {
     const userDtails = req.body;
 
     //checking email
-    const checkEmail = await User.findOne({email: userDtails.email});
-        if(!checkEmail) {
+    const user = await User.findOne({email: userDtails.email});
+        if(!user) {
             res.send('Invalid Email');
         }
-    const password = await bcrypt.compare(userDtails.password, checkEmail.password);
+    const password = await bcrypt.compare(userDtails.password, user.password);
         if(!password) {
             res.send('Invalid Password');
         }
 
-        if (password && checkEmail) {
-            res.setHeader('Set-Cookie', 'login=true; MaxAge=10; Secure = true')
+        if (password && user) {
+            res.setHeader('Set-Cookie', 'login=true; Secure = true')
+            req.session.isLoggedIn = true;
+            req.session.timeNow = Date.now();
+            req.session.user = user;
             res.send(req.session)
         }
 }

@@ -22,6 +22,7 @@ exports.signupUser = async (req,res) => {
   try {
     await newUser.save();
     res.send({id: newUser._id});
+    
   } catch (error) {
     console.log(error);
   }
